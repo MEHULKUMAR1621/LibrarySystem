@@ -1,0 +1,34 @@
+<div class="container">
+    <a class="btn btn-danger" [routerLink]="['/list']"> Back </a>
+</div>
+<form (submit)="onSubmit(create)" #create="ngForm">
+    <mat-card style="text-align: center;">
+        <h1><u>Create Book</u></h1>
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput placeholder="Book-Name" ngModel name="name" #name="ngModel" required >
+            <mat-error *ngIf="name.invalid" style="text-align: end;">Please enter a title..</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput placeholder="Book-Duration" ngModel name="duration" #duration="ngModel" required>
+            <mat-error *ngIf="duration.invalid" style="text-align: end;">Please enter a correct price.</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput type="text" placeholder="Product-Details" ngModel name="details" #details="ngModel"
+                required>
+            <mat-error *ngIf="details.invalid" style="text-align: end;">Please enter a valid .</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput type="text" placeholder="Product-ImageUrl" ngModel name="imageUrl" #imageUrl="ngModel"
+                required>
+            <mat-error *ngIf="imageUrl.invalid" style="text-align: end;">Please enter image Url Link.</mat-error>
+        </mat-form-field>
+
+        <img [src]="imageUrl.value" [alt]="name" *ngIf="imageUrl.valid" height="200px" width="200px">
+        <div style="text-align: center; padding: 10px;">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!create.valid">Create</button>
+        </div>
+    </mat-card>
+</form>

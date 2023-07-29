@@ -1,0 +1,31 @@
+<div class="container">
+    <a class="btn btn-danger" [routerLink]="['/list']"> Back </a>
+</div>
+<form (submit)="onSubmit(create)" #create="ngForm">
+    <mat-card style="text-align: center;">
+        <h1><u>{{value}} Book</u></h1>
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput placeholder="Book-Name" name="name" #name="ngModel" required [(ngModel)]="book.bName">
+        </mat-form-field>
+        <br />
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput placeholder="Book-Duration" name="duration" #duration="ngModel" required [(ngModel)]="book.bDuration">
+        </mat-form-field>
+        <br />
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput type="text" placeholder="Book-Details" [(ngModel)]="book.bDetails" name="details" #details="ngModel"
+                required>
+        </mat-form-field>
+        <br />
+        <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+            <input matInput type="text" placeholder="Book-ImageUrl" [(ngModel)]="book.bImage" name="imageUrl" #imageUrl="ngModel"
+                required>
+        </mat-form-field>
+        <br />
+        <img [src]="imageUrl.value" [alt]="name" *ngIf="imageUrl.valid" height="200px" width="200px">
+        <div style="text-align: center; padding: 10px;">
+            <button mat-raised-button color="primary" *ngIf="book.bId" type="submit" [disabled]="!create.valid">{{value}}</button>
+            <button mat-raised-button color="primary" *ngIf="!book.bId" (click)="onCall(book.bId,name,duration,details,imageUrl)" [disabled]="!create.valid">{{value}}</button>
+        </div>
+    </mat-card>
+</form>

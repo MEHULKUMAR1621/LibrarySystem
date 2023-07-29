@@ -1,0 +1,25 @@
+
+<div class="container">
+    <a class="btn btn-danger" [style.display]="getBool() ? '' : 'none'" [routerLink]="['/create']" >Create Your Book</a>
+</div>
+<div class="col">
+    <div class="container">
+        <div class="row" style="padding: 10px;">
+            <div class="col-sm-4" *ngFor="let book of books" style="padding:1rem;">
+                <div class="card">
+                    <img [src]="book.bImage" [alt]="book.bName" height="230px" width="100%" class="rounded"
+                        style="margin: auto; align-items:flex-start;">
+                    <div class="card-body">
+                        <div style="text-align: center;">
+                            <h3 class="card-title">{{book.bName}}</h3>
+                            <a class="btn btn-success" [routerLink]="['/detail/', book.bId]" >Show Details</a>
+                            <br>
+                            <br>
+                            <a class="btn btn-primary" [style.display]="getBool() ? '' : 'none'" [routerLink]="['/update/', book.bId]" >Update Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

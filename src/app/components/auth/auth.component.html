@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="alert alert-danger" *ngIf="error" style="text-align: center;">
+        {{errorMessage}}
+</div>
+</div>
+<div class="container" style="text-align: center;">
+    <br>
+    <form (submit)="onSubmit(loginform)" #loginform="ngForm">
+        <mat-card style="text-align: center; height: 400px;">
+            <div>
+                <h1><u>Login Credential</u></h1>
+            </div>
+            <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+                <input matInput type="email" placeholder="E-Mail" ngModel name="email" #email="ngModel">
+            </mat-form-field>
+            <br />
+            <mat-form-field [style.width.px]=500 [style.padding.px]=30>
+                <input matInput placeholder="Password" ngModel name="password" #password="ngModel" type="password">
+            </mat-form-field>
+            <div style="text-align: center;">
+                <button mat-raised-button color="accent" type="submit" [disabled]="!loginform.valid">Login</button>
+            </div>
+        </mat-card>
+    </form>
+</div>
